@@ -27,6 +27,23 @@ func CookieSetAuthLogin(request *http.Request, writer http.ResponseWriter, token
 	CookieSetLogoutNewPassword(request, writer)
 }
 
+func CookieSetShopId(request *http.Request, writer http.ResponseWriter, shopId string) {
+	var k = GetCookieEnvParam(request)
+	AppSetCookie(writer,
+		k.CookieConfigShopId,
+		shopId,
+		k.CookiePath,
+		k.CookieDomain,
+		GetExpireCookie(k.CookieMaxAge),
+		k.CookieMaxAge,
+		k.CookieSecure,
+		k.CookieHttponly,
+		http.SameSite(k.CookieSameSite),
+		k.Unparsed,
+		"",
+	)
+}
+
 func CookieSetAuthNewPassword(
 	request *http.Request,
 	writer http.ResponseWriter,

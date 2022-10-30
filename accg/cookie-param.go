@@ -21,6 +21,7 @@ type CookieParam struct {
 	CookieConfigAuthParams  string
 	CookieConfigServerCache string
 	CookieConfigNewPassword string
+	CookieConfigShopId      string
 	Unparsed                []string
 }
 
@@ -60,6 +61,7 @@ func GetCookieEnvParam(request *http.Request) CookieParam {
 		CookieConfigAuthParams:  os.Getenv(accgf.COOKIE_CONFIG_AUTH_PARAMS),
 		CookieConfigServerCache: os.Getenv(accgf.COOKIE_CONFIG_SERVER_CACHE),
 		CookieConfigNewPassword: os.Getenv(accgf.COOKIE_CONFIG_NEW_PASSWORD),
+		CookieConfigShopId:      os.Getenv(accgf.COOKIE_CONFIG_SHOP_ID),
 		Unparsed:                []string{},
 	}
 }
