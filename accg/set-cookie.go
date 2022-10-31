@@ -134,6 +134,20 @@ func CookieSetLogout(request *http.Request, writer http.ResponseWriter) {
 		k.Unparsed,
 		"",
 	)
+	AppSetCookie(
+		writer,
+		k.CookieConfigShopId,
+		"",
+		k.CookiePath,
+		k.CookieDomain,
+		GetExpireCookie(k.CookieMaxAgeTimeout),
+		k.CookieMaxAgeTimeout,
+		k.CookieSecure,
+		k.CookieHttponly,
+		http.SameSite(k.CookieSameSite),
+		k.Unparsed,
+		"",
+	)
 }
 
 func CookieSetLogoutNewPassword(request *http.Request, writer http.ResponseWriter) {
