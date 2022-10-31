@@ -29,13 +29,14 @@ func CookieSetAuthLogin(request *http.Request, writer http.ResponseWriter, token
 
 func CookieSetShopId(request *http.Request, writer http.ResponseWriter, shopId string) {
 	var k = GetCookieEnvParam(request)
+	var cookieMaxAge = 31536000 // = 60 * 60 * 24 * 365
 	AppSetCookie(writer,
 		k.CookieConfigShopId,
 		shopId,
 		k.CookiePath,
 		k.CookieDomain,
-		GetExpireCookie(k.CookieMaxAge),
-		k.CookieMaxAge,
+		GetExpireCookie(cookieMaxAge),
+		cookieMaxAge,
 		k.CookieSecure,
 		k.CookieHttponly,
 		http.SameSite(k.CookieSameSite),
